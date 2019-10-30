@@ -41,6 +41,24 @@ RSpec.describe CommandExecutor do
       end
     end
 
+    context 'draw horizontal command' do
+      subject { CommandExecutor.new('H', 3, 5, 2, 'Z').execute!(image) }
+
+      describe 'inclusivity' do
+        it 'draws the pixel at 2,3' do
+          expect(subject[1, 3]).to eq('Z')
+        end
+
+        it 'draws the pixel at 2,6' do
+          expect(subject[1, 4]).to eq('Z')
+        end
+      end
+
+      it 'draws a vertical segment of colour C ' do
+        expect(subject[1, 3]).to eq('Z')
+      end
+    end
+
     context 'clear image command' do
       let(:image) { Matrix.build(4, 4) { 1 } }
       subject { CommandExecutor.new('C').execute!(image) }

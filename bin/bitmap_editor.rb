@@ -59,6 +59,21 @@ class DrawVerticalCommand
 end
 
 class DrawHorizontalCommand
+  attr_reader :column1, :column2, :row, :colour
+
+  def initialize(column1, column2, row, colour)
+    @column1 = column1 - 1
+    @column2 = column2 - 1
+    @row = row - 1
+    @colour = colour
+  end
+
+  def execute!(image)
+    (column1..column2).each do |column|
+      image[row, column] = colour
+    end
+    image
+  end
 end
 
 class ShowImageCommand
