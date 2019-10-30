@@ -36,6 +36,21 @@ class ColourPixelCommand
 end
 
 class DrawVerticalCommand
+  attr_reader :column, :row1, :row2, :colour
+
+  def initialize(column, row1, row2, colour)
+    @column = column - 1
+    @row1 = row1 - 1
+    @row2 = row2 - 1
+    @colour = colour
+  end
+
+  def execute!(image)
+    (row1..row2).each do |row|
+      image[row, column] = colour
+    end
+    image
+  end
 end
 
 class DrawHorizontalCommand
@@ -47,7 +62,11 @@ end
 class CommandExecutor
   COMMAND_MAPPINGS = {
     'I' => CreateImageCommand,
-    'L' => ColourPixelCommand
+    'C' => ClearImageCommand,
+    'L' => ColourPixelCommand,
+    'V' => DrawVerticalCommand,
+    'H' => DrawHorizontalCommand,
+    'S' => ShowImageCommand
   }.freeze
 
   attr_reader :command
