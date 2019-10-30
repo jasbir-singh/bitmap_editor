@@ -11,7 +11,7 @@ class CreateImageCommand
     @columns = columns.to_i
   end
 
-  def execute!
+  def execute!(_ = nil)
     Matrix.zero(rows, columns)
   end
 end
