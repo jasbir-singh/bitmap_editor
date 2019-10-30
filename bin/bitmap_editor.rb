@@ -44,9 +44,9 @@ class DrawVerticalCommand
   attr_reader :column, :row1, :row2, :colour
 
   def initialize(column, row1, row2, colour)
-    @column = column - 1
-    @row1 = row1 - 1
-    @row2 = row2 - 1
+    @column = column.to_i - 1
+    @row1 = row1.to_i - 1
+    @row2 = row2.to_i - 1
     @colour = colour
   end
 
@@ -62,9 +62,9 @@ class DrawHorizontalCommand
   attr_reader :column1, :column2, :row, :colour
 
   def initialize(column1, column2, row, colour)
-    @column1 = column1 - 1
-    @column2 = column2 - 1
-    @row = row - 1
+    @column1 = column1.to_i - 1
+    @column2 = column2.to_i - 1
+    @row = row.to_i - 1
     @colour = colour
   end
 
