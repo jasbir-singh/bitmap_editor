@@ -3,11 +3,11 @@ require 'pry'
 require_relative '../bin/carwow'
 
 RSpec.describe CommandExecutor do
-  let(:image) { Matrix.build(4, 4) { 0 } }
+  let(:image) { CommandExecutor.new('I', '5', '6').execute! }
 
   describe '.execute!' do
     context 'create image command' do
-      subject { CommandExecutor.new('I', '5', '6').execute! }
+      subject { image }
 
       it 'returns the resulting matrix' do
         expect(subject).to be_a_kind_of(Matrix)
@@ -25,8 +25,8 @@ RSpec.describe CommandExecutor do
     context 'colouring pixel command' do
       subject { CommandExecutor.new('L', '1', '3', 'A').execute!(image) }
 
-      it 'updates the corresponding pixel', wip: true do
-        expect(subject[1, 3]).to eq('A')
+      it 'updates the corresponding pixel' do
+        expect(subject[2, 0]).to eq('A')
       end
     end
   end
