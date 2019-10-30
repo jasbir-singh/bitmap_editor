@@ -41,6 +41,15 @@ RSpec.describe CommandExecutor do
       end
     end
 
+    context 'clear image command' do
+      let(:image) { Matrix.build(4, 4) { 1 } }
+      subject { CommandExecutor.new('C').execute!(image) }
+
+      it 'clears the image' do
+        expect(subject[0, 0]).to eq(0)
+      end
+    end
+
     context 'colouring pixel command' do
       subject { CommandExecutor.new('L', '1', '3', 'A').execute!(image) }
 

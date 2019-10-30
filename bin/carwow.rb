@@ -17,6 +17,11 @@ class CreateImageCommand
 end
 
 class ClearImageCommand
+  def execute!(image)
+    image.each_with_index do |e, row, col|
+      image[row, col] = 0
+    end
+  end
 end
 
 class ColourPixelCommand
