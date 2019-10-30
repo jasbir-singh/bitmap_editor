@@ -1,6 +1,6 @@
 require 'rspec'
 require 'pry'
-require_relative '../bin/carwow'
+require_relative '../bin/bitmap_editor'
 
 RSpec.describe CommandExecutor do
   let(:image) { CommandExecutor.new('I', '5', '6').execute! }
