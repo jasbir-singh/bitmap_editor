@@ -12,7 +12,7 @@ class CreateImageCommand
   end
 
   def execute!
-    Matrix.build(rows, columns) { 0 }
+    Matrix.zero(rows, columns)
   end
 end
 
