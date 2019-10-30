@@ -77,6 +77,9 @@ class DrawHorizontalCommand
 end
 
 class ShowImageCommand
+  def execute!(image)
+    image.to_a.each { |row| pp row }
+  end
 end
 
 class CommandExecutor
