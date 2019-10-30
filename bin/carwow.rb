@@ -1,3 +1,4 @@
+require 'matrix'
 # There are 6 supported commands:
 #   I N M - Create a new M x N image with all pixels coloured white (O).
 #   C - Clears the table, setting all pixels to white (O).
@@ -7,6 +8,16 @@
 #   S - Show the contents of the current image
 
 class CreateImageCommand
+  attr_reader :rows, :columns
+
+  def initialize(rows, columns)
+    @rows = rows.to_i
+    @columns = columns.to_i
+  end
+
+  def execute!
+    Matrix.build(rows, columns) { 0 }
+  end
 end
 
 class ClearImageCommand
@@ -25,9 +36,17 @@ class ShowImageCommand
 end
 
 class CommandExecutor
-  def initialize(command)
+  COMMAND_MAPPINGS = {
+    'I' => CreateImageCommand,
+  }
+
+  attr_reader :command
+
+  def initialize(command, *args)
+    @command = COMMAND_MAPPINGS[command].new(*args)
   end
 
   def execute!
+    command.execute!
   end
 end
