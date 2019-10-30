@@ -3,7 +3,7 @@ require 'pry'
 require_relative '../bin/carwow'
 
 RSpec.describe CommandExecutor do
-  let(:image) { Matrix.build(4,4) { 0 } }
+  let(:image) { Matrix.build(4, 4) { 0 } }
 
   describe '.execute!' do
     context 'create image command' do

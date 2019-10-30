@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'matrix'
 require 'pry'
 
@@ -43,7 +45,8 @@ end
 class CommandExecutor
   COMMAND_MAPPINGS = {
     'I' => CreateImageCommand,
-  }
+    'L' => ColourPixelCommand
+  }.freeze
 
   attr_reader :command
 
