@@ -1,11 +1,5 @@
 require 'matrix'
-# There are 6 supported commands:
-#   I N M - Create a new M x N image with all pixels coloured white (O).
-#   C - Clears the table, setting all pixels to white (O).
-#   L X Y C - Colours the pixel (X,Y) with colour C.
-#   V X Y1 Y2 C - Draw a vertical segment of colour C in column X between rows Y1 and Y2 (inclusive).
-#   H X1 X2 Y C - Draw a horizontal segment of colour C in row Y between columns X1 and X2 (inclusive).
-#   S - Show the contents of the current image
+require 'pry'
 
 class CreateImageCommand
   attr_reader :rows, :columns
@@ -24,6 +18,17 @@ class ClearImageCommand
 end
 
 class ColourPixelCommand
+  attr_reader :row, :column, :colour
+
+  def initialize(row, column, colour)
+    @row = row.to_i
+    @column = column.to_i
+    @colour = colour
+  end
+
+  def execute!(image)
+    image[row, column] = colour
+  end
 end
 
 class DrawVerticalCommand
@@ -46,7 +51,7 @@ class CommandExecutor
     @command = COMMAND_MAPPINGS[command].new(*args)
   end
 
-  def execute!
-    command.execute!
+  def execute!(*args)
+    command.execute!(*args)
   end
 end
