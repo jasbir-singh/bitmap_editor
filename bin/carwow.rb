@@ -6,7 +6,7 @@ require 'pry'
 class CreateImageCommand
   attr_reader :rows, :columns
 
-  def initialize(rows, columns)
+  def initialize(columns, rows)
     @rows = rows.to_i
     @columns = columns.to_i
   end
