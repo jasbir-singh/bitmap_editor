@@ -1,95 +1,18 @@
-# frozen_string_literal: true
-
-require 'matrix'
-require 'pry'
-
-class CreateImageCommand
-  attr_reader :rows, :columns
-
-  def initialize(columns, rows)
-    @rows = rows.to_i
-    @columns = columns.to_i
-  end
-
-  def execute!(_ = nil)
-    Matrix.zero(rows, columns)
-  end
-end
-
-class ClearImageCommand
-  def execute!(image)
-    image.each_with_index do |e, row, col|
-      image[row, col] = 0
-    end
-  end
-end
-
-class ColourPixelCommand
-  attr_reader :row, :column, :colour
-
-  def initialize(column, row, colour)
-    # TODO: Handle the case where rows, columns are out of bound
-    @row = row.to_i - 1
-    @column = column.to_i - 1
-    @colour = colour
-  end
-
-  def execute!(image)
-    image[row, column] = colour
-    image
-  end
-end
-
-class DrawVerticalCommand
-  attr_reader :column, :row1, :row2, :colour
-
-  def initialize(column, row1, row2, colour)
-    @column = column.to_i - 1
-    @row1 = row1.to_i - 1
-    @row2 = row2.to_i - 1
-    @colour = colour
-  end
-
-  def execute!(image)
-    (row1..row2).each do |row|
-      image[row, column] = colour
-    end
-    image
-  end
-end
-
-class DrawHorizontalCommand
-  attr_reader :column1, :column2, :row, :colour
-
-  def initialize(column1, column2, row, colour)
-    @column1 = column1.to_i - 1
-    @column2 = column2.to_i - 1
-    @row = row.to_i - 1
-    @colour = colour
-  end
-
-  def execute!(image)
-    (column1..column2).each do |column|
-      image[row, column] = colour
-    end
-    image
-  end
-end
-
-class ShowImageCommand
-  def execute!(image)
-    image.to_a.each { |row| pp row }
-  end
-end
+require './bin/commands/create_image'
+require './bin/commands/clear_image'
+require './bin/commands/colour_pixel'
+require './bin/commands/draw_vertical'
+require './bin/commands/draw_horizontal'
+require './bin/commands/show_image'
 
 class CommandExecutor
   COMMAND_MAPPINGS = {
-    'I' => CreateImageCommand,
-    'C' => ClearImageCommand,
-    'L' => ColourPixelCommand,
-    'V' => DrawVerticalCommand,
-    'H' => DrawHorizontalCommand,
-    'S' => ShowImageCommand
+    'I' => Commands::CreateImage,
+    'C' => Commands::ClearImage,
+    'L' => Commands::ColourPixel,
+    'V' => Commands::DrawVertical,
+    'H' => Commands::DrawHorizontal,
+    'S' => Commands::ShowImage
   }.freeze
 
   attr_reader :command
