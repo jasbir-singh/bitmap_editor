@@ -1,5 +1,3 @@
-require 'rspec'
-require 'pry'
 require_relative '../bin/command_executor'
 
 RSpec.describe CommandExecutor do
