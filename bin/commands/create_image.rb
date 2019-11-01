@@ -1,4 +1,5 @@
 require 'matrix'
+
 module Commands
   class CreateImage
     attr_reader :rows, :columns
