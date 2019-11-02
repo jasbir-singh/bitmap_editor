@@ -2,7 +2,7 @@ require_relative '../../lib/bitmap'
 require_relative '../../lib/commands/colour_pixel'
 
 RSpec.describe Commands::ColourPixel do
-  let(:image) { Bitmap.zero(2) }
+  let(:image) { Bitmap.new(rows: 2, columns: 2) }
 
   describe '#execute!' do
     it 'calls Bitmap#fill method with the right arguments' do

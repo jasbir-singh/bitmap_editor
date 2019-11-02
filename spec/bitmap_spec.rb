@@ -1,7 +1,7 @@
 require './lib/bitmap'
 
 RSpec.describe Bitmap do
-  subject { Bitmap.zero(2) }
+  subject { Bitmap.new(rows: 2, columns: 2) }
 
   describe '#fetch' do
     describe 'it validates the bounds' do
@@ -15,7 +15,7 @@ RSpec.describe Bitmap do
     end
 
     it 'delgates fetching x, y pixel to Matrix#[]' do
-      expect(subject).to receive(:[]).with(0, 0)
+      expect(subject.image).to receive(:[]).with(0, 0)
 
       subject.fetch(row: 0, column: 0)
     end
@@ -33,7 +33,7 @@ RSpec.describe Bitmap do
     end
 
     it 'delgates setting x, y pixel Matrix#[]=' do
-      expect(subject).to receive(:[]=).with(0, 0, 'C')
+      expect(subject.image).to receive(:[]=).with(0, 0, 'C')
 
       subject.fill(row: 0, column: 0, colour: 'C')
     end

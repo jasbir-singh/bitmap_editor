@@ -10,7 +10,7 @@ module Commands
     end
 
     def execute!(_ = nil)
-      Bitmap.zero(rows, columns)
+      Bitmap.new(rows: rows, columns: columns)
     end
   end
 end

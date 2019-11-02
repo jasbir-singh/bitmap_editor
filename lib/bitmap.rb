@@ -1,19 +1,29 @@
+require 'forwardable'
 require 'matrix'
 
-class Bitmap < Matrix
+class Bitmap
   class OutOfBoundError < StandardError
+  end
+  extend Forwardable
+
+  def_delegators :@image, :row_size, :column_size
+
+  attr_accessor :image
+
+  def initialize(rows:, columns:)
+    @image = Matrix.zero(rows, columns)
   end
 
   def fill(row:, column:, colour:)
     validate_bounds(row, column)
 
-    self[row, column] = colour
+    image[row, column] = colour
   end
 
   def fetch(row:, column:)
     validate_bounds(row, column)
 
-    self[row, column]
+    image[row, column]
   end
 
   private

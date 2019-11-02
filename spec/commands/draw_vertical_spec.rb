@@ -2,7 +2,7 @@ require_relative '../../lib/bitmap'
 require_relative '../../lib/commands/draw_vertical'
 
 RSpec.describe Commands::DrawVertical do
-  let(:image) { Bitmap.zero(6, 5) }
+  let(:image) { Bitmap.new(rows: 6, columns: 5) }
 
   subject { described_class.new(2, 3, 6, 'W').execute!(image) }
 
@@ -11,16 +11,16 @@ RSpec.describe Commands::DrawVertical do
     # verify that fill is getting called with the right arguments
 
     it 'draws the pixel at 2,3' do
-      expect(subject[2, 1]).to eq('W')
+      expect(subject.image[2, 1]).to eq('W')
     end
 
     it 'draws the pixel at 2,6' do
-      expect(subject[5, 1]).to eq('W')
+      expect(subject.image[5, 1]).to eq('W')
     end
   end
 
   it 'draws a vertical segment of colour C ' do
-    expect(subject[3, 1]).to eq('W')
-    expect(subject[4, 1]).to eq('W')
+    expect(subject.image[3, 1]).to eq('W')
+    expect(subject.image[4, 1]).to eq('W')
   end
 end
