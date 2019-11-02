@@ -25,7 +25,7 @@ Style/FrozenStringLiteralComment:
 
 # allow Foo::Bar shorthand format rather than requiring nested modules
 Style/ClassAndModuleChildren:
-  EnforcedStyle: compact
+  EnforcedStyle: nested
 
 # allow us to order our gems how we want
 Bundler/OrderedGems:
