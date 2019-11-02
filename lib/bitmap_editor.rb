@@ -14,7 +14,7 @@ class BitmapEditor
   def run_commands_from_file(file_path)
     # TODO: Handle the case when the file doesn't exist
     IO.foreach(file_path) do |line|
-      @bitmap = CommandExecutor.new(*line_to_command(line)).execute!(@bitmap)
+      @current_bitmap = CommandExecutor.new(*line_to_command(line)).execute!(@current_bitmap)
     end
   end
 
@@ -26,8 +26,8 @@ class BitmapEditor
     loop do
       print('> ')
       input = gets.chomp
-      @bitmap = CommandExecutor.new(*line_to_command(input)).execute!(@bitmap)
-      CommandExecutor.new('S').execute!(@bitmap)
+      @current_bitmap = CommandExecutor.new(*line_to_command(input)).execute!(@current_bitmap)
+      CommandExecutor.new('S').execute!(@current_bitmap)
     end
   end
 end
