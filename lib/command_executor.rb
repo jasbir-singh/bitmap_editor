@@ -19,7 +19,7 @@ class CommandExecutor
   attr_reader :command
 
   def initialize(command, *args)
-    @command = (COMMAND_MAPPINGS[command] || Commands::Unrecognised).new(*args)
+    @command = COMMAND_MAPPINGS.fetch(command, Commands::Unrecognised).new(*args)
   end
 
   def execute!(*args)
