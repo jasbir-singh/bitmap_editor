@@ -4,7 +4,7 @@ class BitmapEditor
   def run(file_path)
     repl unless file_path
 
-    return puts 'Please provide correct file' unless File.exist?(file_path)
+    return puts "File doesn't exist" unless File.exist?(file_path)
 
     run_commands_from_file(file_path) if file_path
   end
