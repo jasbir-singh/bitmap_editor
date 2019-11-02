@@ -11,7 +11,7 @@ module Commands
 
     def execute!(image)
       (column1..column2).each do |column|
-        image[row, column] = colour
+        image.fill(row: row, column: column, colour: colour)
       end
       image
     end
