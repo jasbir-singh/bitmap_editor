@@ -5,22 +5,10 @@ RSpec.describe Commands::ColourPixel do
   let(:image) { Bitmap.zero(2) }
 
   describe '#execute!' do
-    context 'pixel are invalid', wip: true do
-      it 'should raise out of bound error' do
-        expect { described_class.new(3, 2, 'W').execute!(image) }.to raise_error(Bitmap::OutOfBoundError)
-      end
+    it 'calls Bitmap#fill method with the right arguments' do
+      expect(image).to receive(:fill).with(row: 0, column: 0, colour: 'W')
 
-      it 'should raise out of bound error' do
-        expect { described_class.new(2, 3, 'W').execute!(image) }.to raise_error(Bitmap::OutOfBoundError)
-      end
-    end
-
-    context 'with valid pixels' do
-      subject { described_class.new(1, 1, 'W').execute!(image) }
-
-      it 'colours the right pixel' do
-        expect(subject[0, 0]).to eq('W')
-      end
+      described_class.new(1, 1, 'W').execute!(image)
     end
   end
 end

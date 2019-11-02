@@ -10,6 +10,12 @@ class Bitmap < Matrix
     self[row, column] = colour
   end
 
+  def fetch(row:, column:)
+    validate_bounds(row, column)
+
+    self[row, column]
+  end
+
   private
 
   def validate_bounds(row, column)
