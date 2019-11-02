@@ -8,7 +8,7 @@ RSpec.describe Commands::ColourPixel do
     subject { described_class.new(1, 1, 'W').execute!(image) }
 
     it 'colours the right pixel', wip: true do
-      expect(subject[0,0]).to eq('W')
+      expect(subject[0, 0]).to eq('W')
     end
   end
 end
