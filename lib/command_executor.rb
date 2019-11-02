@@ -4,6 +4,7 @@ require './lib/commands/colour_pixel'
 require './lib/commands/draw_vertical'
 require './lib/commands/draw_horizontal'
 require './lib/commands/show_image'
+require './lib/commands/unrecognised'
 
 class CommandExecutor
   COMMAND_MAPPINGS = {
@@ -18,7 +19,7 @@ class CommandExecutor
   attr_reader :command
 
   def initialize(command, *args)
-    @command = COMMAND_MAPPINGS[command].new(*args)
+    @command = (COMMAND_MAPPINGS[command] || Commands::Unrecognised).new(*args)
   end
 
   def execute!(*args)
