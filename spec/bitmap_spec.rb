@@ -13,9 +13,10 @@ RSpec.describe Bitmap do
 
   describe '#clear!' do
     before { subject.clear! }
+
     it 'sets each element to zero' do
       subject.each do |elem|
-        expect(elem).to be_zero
+        expect(elem).to eq(Bitmap::WHITE_COLOUR)
       end
     end
   end
