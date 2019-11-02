@@ -3,7 +3,7 @@ module Commands
     def execute!(image)
       return no_image unless image
 
-      image.to_a.each { |row| puts row.join }
+      puts image
     end
 
     private

@@ -33,6 +33,10 @@ class Bitmap
     image[row, column]
   end
 
+  def to_s
+    to_a.map(&:join).join("\n")
+  end
+
   private
 
   def validate_bounds(row, column)

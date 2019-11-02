@@ -12,10 +12,18 @@ RSpec.describe Commands::ShowImage do
     end
 
     context 'with valid image' do
-      let(:image) { Bitmap[[1, 2], [3, 4]] }
+      let(:image) do
+        Bitmap.new(rows: 2, columns: 2).tap do |image|
+          image
+            .fill(row: 0, column: 0, colour: 'A')
+            .fill(row: 0, column: 1, colour: 'B')
+            .fill(row: 1, column: 0, colour: 'C')
+            .fill(row: 1, column: 1, colour: 'D')
+        end
+      end
 
-      xit 'prints out image' do
-        expect { described_class.new.execute!(image) }.to output("12\n34\n").to_stdout
+      it 'prints out image' do
+        expect { described_class.new.execute!(image) }.to output("AB\nCD\n").to_stdout
       end
     end
   end
