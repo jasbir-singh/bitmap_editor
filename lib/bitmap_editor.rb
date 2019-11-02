@@ -15,6 +15,8 @@ class BitmapEditor
     IO.foreach(file_path) do |line|
       @current_bitmap = CommandExecutor.new(*line_to_command(line)).execute!(@current_bitmap)
     end
+  rescue StandardError => e
+    puts "Error occured: #{e.message}"
   end
 
   def line_to_command(line)
@@ -28,6 +30,8 @@ class BitmapEditor
       @current_bitmap = CommandExecutor.new(*line_to_command(input)).execute!(@current_bitmap)
 
       CommandExecutor.new('S').execute!(@current_bitmap)
+    rescue StandardError => e
+      puts "Error occured: #{e.message}"
     end
   end
 end

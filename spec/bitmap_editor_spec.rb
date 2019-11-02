@@ -30,5 +30,21 @@ RSpec.describe BitmapEditor do
         end
       end
     end
+
+    context 'with invalid commands' do
+      describe 'example2' do
+        let(:file_path) { 'spec/fixtures/error_example1.txt' }
+        let(:expected_output) do
+          <<~EOF
+          AO
+          OO
+        EOF
+        end
+
+        it 'has the correct output' do
+          expect { BitmapEditor.new.run(file_path) }.to output(/Error occured/).to_stdout
+        end
+      end
+    end
   end
 end
