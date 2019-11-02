@@ -9,12 +9,10 @@ RSpec.describe Commands::ClearImage do
   end
 
   describe '#execute!' do
-    subject { described_class.new.execute!(image) }
+    it 'sets all the elements to be zero' do
+      expect(image).to receive(:clear!)
 
-    xit 'sets all the elements to be zero' do
-      subject.each do |elem|
-        expect(elem).to be_zero
-      end
+      described_class.new.execute!(image)
     end
   end
 end

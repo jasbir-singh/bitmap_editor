@@ -6,7 +6,7 @@ class Bitmap
   end
   extend Forwardable
 
-  def_delegators :@image, :row_size, :column_size
+  def_delegators :@image, :row_size, :column_size, :each_with_index, :each, :to_a
 
   attr_accessor :image
 
@@ -14,10 +14,17 @@ class Bitmap
     @image = Matrix.zero(rows, columns)
   end
 
+  def clear!
+    each_with_index do |_e, row, col|
+      image[row, col] = 0
+    end
+  end
+
   def fill(row:, column:, colour:)
     validate_bounds(row, column)
 
     image[row, column] = colour
+    self
   end
 
   def fetch(row:, column:)
