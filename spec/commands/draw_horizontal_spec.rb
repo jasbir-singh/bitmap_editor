@@ -1,8 +1,8 @@
-require 'matrix'
+require_relative '../../lib/bitmap'
 require_relative '../../lib/commands/draw_horizontal'
 
 RSpec.describe Commands::DrawHorizontal do
-  let(:image) { Matrix.zero(6, 5) }
+  let(:image) { Bitmap.zero(6, 5) }
 
   context 'draw horizontal command' do
     subject { described_class.new(3, 5, 2, 'Z').execute!(image) }

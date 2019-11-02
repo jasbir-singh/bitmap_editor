@@ -1,8 +1,8 @@
-require 'matrix'
+require_relative '../../lib/bitmap'
 require_relative '../../lib/commands/show_image'
 
 RSpec.describe Commands::ShowImage do
-  let(:image) { Matrix[[1, 2], [3, 4]] }
+  let(:image) { Bitmap[[1, 2], [3, 4]] }
 
   describe '#execute!' do
     it 'prints out image' do

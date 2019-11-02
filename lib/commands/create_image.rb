@@ -1,4 +1,4 @@
-require 'matrix'
+require './lib/bitmap'
 
 module Commands
   class CreateImage
@@ -10,7 +10,7 @@ module Commands
     end
 
     def execute!(_ = nil)
-      Matrix.zero(rows, columns)
+      Bitmap.zero(rows, columns)
     end
   end
 end

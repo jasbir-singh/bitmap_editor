@@ -1,12 +1,12 @@
-require 'matrix'
+require_relative '../../lib/bitmap'
 require_relative '../../lib/commands/create_image'
 
 RSpec.describe Commands::CreateImage do
   describe '#execute!' do
     subject { described_class.new(5, 6).execute! }
 
-    it 'creates a new image of type Matrix' do
-      expect(subject).to be_a(Matrix)
+    it 'creates a new image of type Bitmap' do
+      expect(subject).to be_a(Bitmap)
     end
 
     it 'has right number of rows' do
