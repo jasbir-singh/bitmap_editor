@@ -1,5 +1,5 @@
 require 'matrix'
-require_relative '../../bin/commands/colour_pixel'
+require_relative '../../lib/commands/colour_pixel'
 
 RSpec.describe Commands::ColourPixel do
   let(:image) { Matrix.zero(2) }

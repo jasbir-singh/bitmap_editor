@@ -1,5 +1,5 @@
 require 'matrix'
-require_relative '../../bin/commands/draw_vertical'
+require_relative '../../lib/commands/draw_vertical'
 
 RSpec.describe Commands::DrawVertical do
   let(:image) { Matrix.zero(6, 5) }

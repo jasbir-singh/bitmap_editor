@@ -1,5 +1,5 @@
 require 'matrix'
-require_relative '../../bin/commands/clear_image'
+require_relative '../../lib/commands/clear_image'
 
 RSpec.describe Commands::ClearImage do
   let(:image) { Matrix[[1,2], [3,4]] }

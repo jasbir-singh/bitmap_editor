@@ -1,5 +1,5 @@
 require 'matrix'
-require_relative '../../bin/commands/create_image'
+require_relative '../../lib/commands/create_image'
 
 RSpec.describe Commands::CreateImage do
   describe '#execute!' do

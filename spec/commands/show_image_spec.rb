@@ -1,5 +1,5 @@
 require 'matrix'
-require_relative '../../bin/commands/show_image'
+require_relative '../../lib/commands/show_image'
 
 RSpec.describe Commands::ShowImage do
   let(:image) { Matrix[[1,2],[3,4]] }

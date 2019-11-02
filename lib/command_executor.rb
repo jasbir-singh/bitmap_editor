@@ -1,9 +1,9 @@
-require './bin/commands/create_image'
-require './bin/commands/clear_image'
-require './bin/commands/colour_pixel'
-require './bin/commands/draw_vertical'
-require './bin/commands/draw_horizontal'
-require './bin/commands/show_image'
+require './lib/commands/create_image'
+require './lib/commands/clear_image'
+require './lib/commands/colour_pixel'
+require './lib/commands/draw_vertical'
+require './lib/commands/draw_horizontal'
+require './lib/commands/show_image'
 
 class CommandExecutor
   COMMAND_MAPPINGS = {

@@ -1,5 +1,5 @@
 require 'matrix'
-require_relative '../../bin/commands/draw_horizontal'
+require_relative '../../lib/commands/draw_horizontal'
 
 RSpec.describe Commands::DrawHorizontal do
   let(:image) { Matrix.zero(6, 5) }
