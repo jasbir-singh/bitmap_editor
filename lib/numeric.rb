@@ -1,12 +1,16 @@
 class Numeric
   class InvalidIntegerError < StandardError
-    def initialize(input:)
-      super(formatted_error(input))
+    attr_reader :input
+
+    def initialize(input)
+      @input = input
+
+      super(formatted_error)
     end
 
     private
 
-    def formatted_error(input)
+    def formatted_error
       "#{input} is invalid. Please provide a positive integer instead."
     end
   end
@@ -15,9 +19,9 @@ class Numeric
     begin
       output = Integer(input)
     rescue ArgumentError
-      raise InvalidIntegerError.new(input: input)
+      raise InvalidIntegerError, input
     end
-    raise InvalidIntegerError.new(input: input) if output.negative?
+    raise InvalidIntegerError, input if output.negative?
 
     output
   end
