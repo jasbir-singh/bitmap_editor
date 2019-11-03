@@ -32,6 +32,12 @@ RSpec.describe Bitmap do
     end
   end
 
+  describe 'aliases' do
+    it 'aliases image as image!' do
+      expect(subject.method(:image)).to eq(subject.method(:image?))
+    end
+  end
+
   describe '#create!' do
     let(:subject) { Bitmap.new }
 
