@@ -1,6 +1,8 @@
+# rubocop:disable Naming/UncommunicativeMethodParamName
 class Pixel
+  # NOTE: Usually I wouldn't use such short method/variable names.
+  #       However, in this context I think they make sense.
   attr_reader :x, :y
-  include Comparable
 
   def initialize(x:, y:)
     @x = x.to_i
@@ -14,3 +16,4 @@ class Pixel
   alias row y
   alias column x
 end
+# rubocop:enable Naming/UncommunicativeMethodParamName
