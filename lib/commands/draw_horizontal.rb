@@ -7,6 +7,8 @@ module Commands
     def initialize(start_column, end_column, row, colour)
       @start_column = start_column
       @end_column = end_column
+      raise StandardError, 'X2 has to be greater or equal to X1' if start_column > end_column
+
       @row = row
       @colour = colour
     end

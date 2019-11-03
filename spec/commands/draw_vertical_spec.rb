@@ -32,7 +32,7 @@ RSpec.describe Commands::DrawVertical do
     end
   end
 
-  context 'when Y1(start_colun) and Y2(end_column) are exactly same' do
+  context 'when Y1(start_column) and Y2(end_column) are exactly same' do
     before { described_class.new(1, 1, 1, 'W').execute(image) }
 
     it 'only colours pixel 1, 1' do
