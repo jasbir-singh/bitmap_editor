@@ -1,10 +1,10 @@
 require './lib/command_executor'
 
 class BitmapEditor
-  attr_accessor :current_bitmap
+  attr_reader :current_bitmap
 
   def initialize
-    self.current_bitmap = Bitmap.new
+    @current_bitmap = Bitmap.new
   end
 
   def run(file_path)

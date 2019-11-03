@@ -13,7 +13,7 @@ class Bitmap
   extend Forwardable
   def_delegators :@image, :row_size, :column_size, :each_with_index, :each, :to_a
 
-  attr_accessor :image
+  attr_reader :image
   alias image? image
 
   def initialize(rows: nil, columns: nil)
@@ -24,7 +24,7 @@ class Bitmap
     raise StandardError, 'Please also provide number of columns' if !columns && rows
     raise StandardError, 'Please also provide number of rows' if !rows && columns
 
-    self.image = Matrix.build(rows, columns) { WHITE_COLOUR }
+    @image = Matrix.build(rows, columns) { WHITE_COLOUR }
   end
 
   def clear_image
