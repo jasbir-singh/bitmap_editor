@@ -79,6 +79,14 @@ RSpec.describe Bitmap do
   end
 
   describe '#to_s' do
+    context 'with no image being present' do
+      subject { Bitmap.new }
+
+      it 'should return empty string' do
+        expect(subject.to_s).to be_empty
+      end
+    end
+
     it 'returns a representation of the bitmap as a string' do
       expect(subject.to_s).to eq("AB\nCD")
     end
