@@ -12,13 +12,6 @@ RSpec.describe Bitmap do
     end
   end
 
-  describe 'filling' do
-    it 'works' do
-      expect(subject.fetch(pixel: Pixel.new(x: 1, y: 1))).to eq('A')
-      expect(subject.fetch(pixel: Pixel.new(x: 2, y: 1))).to eq('B')
-    end
-  end
-
   describe '#clear!' do
     before { subject.clear! }
 
@@ -48,6 +41,24 @@ RSpec.describe Bitmap do
       expect(subject.image).to receive(:[]).with(1, 0)
 
       subject.fetch(pixel: Pixel.new(x: 1, y: 2))
+    end
+
+    describe 'it fetches the right colour' do
+      it 'returns A for (1, 1)' do
+        expect(subject.fetch(pixel: Pixel.new(x: 1, y: 1))).to eq('A')
+      end
+
+      it 'returns B for (2, 1)' do
+        expect(subject.fetch(pixel: Pixel.new(x: 2, y: 1))).to eq('B')
+      end
+
+      it 'returns C for (1, 2)' do
+        expect(subject.fetch(pixel: Pixel.new(x: 1, y: 2))).to eq('C')
+      end
+
+      it 'returns D for (2, 2)' do
+        expect(subject.fetch(pixel: Pixel.new(x: 2, y: 2))).to eq('D')
+      end
     end
   end
 
