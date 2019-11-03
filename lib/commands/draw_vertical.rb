@@ -4,6 +4,8 @@ module Commands
 
     def initialize(column, start_row, end_row, colour)
       @column = column
+      raise StandardError, 'Y2 has to be greater or equal to Y1' if start_row > end_row
+
       @start_row = start_row
       @end_row = end_row
       @colour = colour
