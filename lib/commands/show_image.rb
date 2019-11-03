@@ -4,6 +4,7 @@ module Commands
       return no_image unless image
 
       puts image
+      image
     end
 
     private

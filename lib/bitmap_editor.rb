@@ -26,10 +26,10 @@ class BitmapEditor
   def repl
     loop do
       print('> ')
-      input = gets.chomp
-      @current_bitmap = CommandExecutor.new(*line_to_command(input)).execute!(@current_bitmap)
+      input = gets&.chomp
+      exit unless input
 
-      CommandExecutor.new('S').execute!(@current_bitmap)
+      @current_bitmap = CommandExecutor.new(*line_to_command(input)).execute!(@current_bitmap)
     rescue StandardError => e
       puts "Error occured: #{e.message}"
     end
