@@ -9,7 +9,7 @@ module Commands
       @columns = columns.to_i
     end
 
-    def execute!(bitmap)
+    def execute(bitmap)
       bitmap.create_image(rows: rows, columns: columns)
     end
   end

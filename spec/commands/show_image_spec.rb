@@ -3,12 +3,12 @@ require_relative '../../lib/bitmap'
 require_relative '../../lib/commands/show_image'
 
 RSpec.describe Commands::ShowImage do
-  describe '#execute!' do
+  describe '#execute' do
     context 'with no image' do
       let(:image) {}
 
       it 'returns error message' do
-        expect { described_class.new.execute!(image) }.to output(/There is no image/).to_stdout
+        expect { described_class.new.execute(image) }.to output(/There is no image/).to_stdout
       end
     end
 
@@ -24,7 +24,7 @@ RSpec.describe Commands::ShowImage do
       end
 
       it 'prints out image' do
-        expect { described_class.new.execute!(image) }.to output("AB\nCD\n").to_stdout
+        expect { described_class.new.execute(image) }.to output("AB\nCD\n").to_stdout
       end
     end
   end

@@ -5,7 +5,7 @@ require_relative '../../lib/commands/draw_vertical'
 RSpec.describe Commands::DrawVertical do
   let(:image) { Bitmap.new(rows: 6, columns: 5) }
 
-  before { described_class.new(2, 3, 6, 'W').execute!(image) }
+  before { described_class.new(2, 3, 6, 'W').execute(image) }
 
   describe 'inclusivity' do
     it 'draws the pixel at 2,3' do

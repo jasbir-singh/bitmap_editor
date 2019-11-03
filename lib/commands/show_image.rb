@@ -1,6 +1,6 @@
 module Commands
   class ShowImage
-    def execute!(bitmap)
+    def execute(bitmap)
       return no_bitmap unless bitmap&.image?
 
       puts bitmap

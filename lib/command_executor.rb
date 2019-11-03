@@ -22,7 +22,7 @@ class CommandExecutor
     @command = COMMAND_MAPPINGS.fetch(command, Commands::Unrecognised).new(*args)
   end
 
-  def execute!(image)
-    command.execute!(image)
+  def execute(image)
+    command.execute(image)
   end
 end

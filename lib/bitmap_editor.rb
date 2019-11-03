@@ -36,7 +36,7 @@ class BitmapEditor
   end
 
   def execute_command(input)
-    CommandExecutor.new(*input.split(' ')).execute!(current_bitmap)
+    CommandExecutor.new(*input.split(' ')).execute(current_bitmap)
   end
 
   def handle_error(error)
