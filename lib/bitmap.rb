@@ -27,14 +27,14 @@ class Bitmap
   end
 
   def fill(pixel:, colour:)
-    validate_bounds(pixel.row, pixel.column)
+    validate_bounds(pixel)
 
     image[pixel.row - 1, pixel.column - 1] = colour
     self
   end
 
   def fetch(pixel:)
-    validate_bounds(pixel.row, pixel.column)
+    validate_bounds(pixel)
 
     image[pixel.row - 1, pixel.column - 1]
   end
@@ -45,7 +45,7 @@ class Bitmap
 
   private
 
-  def validate_bounds(row, column)
-    raise OutOfBoundError if row > row_size || column > column_size
+  def validate_bounds(pixel)
+    raise OutOfBoundError if pixel.row > row_size || pixel.column > column_size
   end
 end
