@@ -6,7 +6,7 @@ class Bitmap
 
   class OutOfBoundError < StandardError
     def message
-      "Co-ordinates are out of bound."
+      'Co-ordinates are out of bound.'
     end
   end
 
