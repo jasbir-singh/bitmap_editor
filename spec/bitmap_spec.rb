@@ -12,6 +12,26 @@ RSpec.describe Bitmap do
     end
   end
 
+  describe 'delegators' do
+    it 'delegates row_size to the @image' do
+      expect(subject.image).to receive(:row_size)
+
+      subject.row_size
+    end
+
+    it 'delegates column_size to the @image' do
+      expect(subject.image).to receive(:column_size)
+
+      subject.column_size
+    end
+
+    it 'delegates each_with_index to the @image' do
+      expect(subject.image).to receive(:each_with_index)
+
+      subject.each_with_index
+    end
+  end
+
   describe '#create!' do
     let(:subject) { Bitmap.new }
 
