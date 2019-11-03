@@ -3,8 +3,17 @@ require 'matrix'
 
 class Bitmap
   class OutOfBoundError < StandardError
-    def new(message)
-      super(message)
+  end
+
+  class InvalidArgumentError < StandardError
+    def initialize(_message)
+      super(error_message)
+    end
+
+    private
+
+    def error_message
+      'Please provide both rows and columns.'
     end
   end
 
@@ -21,8 +30,7 @@ class Bitmap
   end
 
   def create_image(rows:, columns:)
-    raise StandardError, 'Please also provide number of columns' if !columns && rows
-    raise StandardError, 'Please also provide number of rows' if !rows && columns
+    raise InvalidArgumentError unless rows && columns
 
     @image = Matrix.build(rows, columns) { WHITE_COLOUR }
   end
