@@ -5,6 +5,14 @@ require_relative '../../lib/commands/draw_vertical'
 RSpec.describe Commands::DrawVertical do
   let(:image) { Bitmap.new(rows: 3, columns: 3) }
 
+  context 'when the arguments are invalid' do
+    it 'raises an error' do
+      expect do
+        described_class.new('A', 5, 2, 'Z').execute(image)
+      end.to raise_error(/positive integer/)
+    end
+  end
+
   context 'when Y2 (end_column) > Y1 (start_column)' do
     let(:image) { Bitmap.new(rows: 6, columns: 5) }
     before { described_class.new(2, 3, 6, 'W').execute(image) }

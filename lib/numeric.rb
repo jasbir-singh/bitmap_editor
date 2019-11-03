@@ -7,6 +7,7 @@ class Numeric
     end
 
     raise StandardError, "#{input} is invalid. Please provide a positive integer instead." if output.negative?
+
     output
   end
 end

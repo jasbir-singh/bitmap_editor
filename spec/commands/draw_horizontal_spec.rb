@@ -2,9 +2,17 @@ require_relative '../../lib/bitmap'
 require_relative '../../lib/commands/draw_horizontal'
 
 RSpec.describe Commands::DrawHorizontal do
-  context 'when X2 is greater then X1' do
-    let(:image) { Bitmap.new(rows: 6, columns: 5) }
+  let(:image) { Bitmap.new(rows: 6, columns: 5) }
 
+  context 'when the arguments are invalid' do
+    it 'raises an error' do
+      expect do
+        described_class.new('A', 5, 2, 'Z').execute(image)
+      end.to raise_error(/positive integer/)
+    end
+  end
+
+  context 'when X2 is greater then X1' do
     before { described_class.new(3, 5, 2, 'Z').execute(image) }
 
     describe 'inclusivity' do

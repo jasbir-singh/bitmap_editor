@@ -1,13 +1,16 @@
+require_relative '../numeric'
+require_relative '../pixel'
+
 module Commands
   class DrawVertical
     attr_reader :column, :start_row, :end_row, :colour
 
     def initialize(column, start_row, end_row, colour)
-      @column = column
+      @column = Numeric.parse_positive_integer(column)
       raise StandardError, 'Y2 has to be greater or equal to Y1' if start_row > end_row
 
-      @start_row = start_row
-      @end_row = end_row
+      @start_row = Numeric.parse_positive_integer(start_row)
+      @end_row = Numeric.parse_positive_integer(end_row)
       @colour = colour
     end
 
