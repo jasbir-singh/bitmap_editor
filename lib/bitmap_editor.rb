@@ -1,8 +1,10 @@
 require './lib/command_executor'
 
 class BitmapEditor
+  attr_accessor :current_bitmap
+
   def initialize
-    @current_bitmap = Bitmap.new
+    self.current_bitmap = Bitmap.new
   end
 
   def run(file_path)
@@ -16,15 +18,9 @@ class BitmapEditor
   def run_commands_from_file(file_path)
     return puts "File doesn't exist" unless File.exist?(file_path)
 
-    IO.foreach(file_path) do |line|
-      CommandExecutor.new(*line_to_command(line)).execute!(@current_bitmap)
-    end
+    IO.foreach(file_path) { |line| execute_command(line) }
   rescue StandardError => e
-    puts "Error occured: #{e.message}"
-  end
-
-  def line_to_command(line)
-    line.split(' ')
+    handle_error(e)
   end
 
   def repl
@@ -33,10 +29,18 @@ class BitmapEditor
       input = gets&.chomp
       exit unless input
 
-      @current_bitmap = CommandExecutor.new(*line_to_command(input)).execute!(@current_bitmap)
+      execute_command(input)
     rescue StandardError => e
-      puts "Error occured: #{e.message}"
+      handle_error(e)
     end
+  end
+
+  def execute_command(input)
+    CommandExecutor.new(*input.split(' ')).execute!(current_bitmap)
+  end
+
+  def handle_error(error)
+    puts "Error occured: #{error.message}"
   end
 end
 
