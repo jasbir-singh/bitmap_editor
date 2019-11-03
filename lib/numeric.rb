@@ -1,12 +1,23 @@
 class Numeric
+  class InvalidIntegerError < StandardError
+    def initialize(input:)
+      super(formatted_error(input))
+    end
+
+    private
+
+    def formatted_error(input)
+      "#{input} is invalid. Please provide a positive integer instead."
+    end
+  end
+
   def self.parse_positive_integer(input)
     begin
       output = Integer(input)
     rescue ArgumentError
-      raise StandardError, "#{input} is invalid. Please provide a positive integer instead."
+      raise InvalidIntegerError.new(input: input)
     end
-
-    raise StandardError, "#{input} is invalid. Please provide a positive integer instead." if output.negative?
+    raise InvalidIntegerError.new(input: input) if output.negative?
 
     output
   end
