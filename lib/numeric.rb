@@ -11,7 +11,7 @@ class Numeric
     private
 
     def formatted_error
-      "#{input} is invalid. Please provide a positive integer instead."
+      "#{input} is an invalid argument. Please provide a positive integer instead."
     end
   end
 

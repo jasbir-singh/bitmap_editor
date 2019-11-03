@@ -6,7 +6,7 @@ RSpec.describe Numeric do
       it 'raises an error' do
         expect do
           described_class.parse_positive_integer('A')
-        end.to raise_error(/A is invalid/)
+        end.to raise_error(/A is an invalid argument/)
       end
     end
 
