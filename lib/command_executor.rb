@@ -23,8 +23,6 @@ class CommandExecutor
   end
 
   def execute!(image)
-    new_image = command.execute!(image)
-
-    image || new_image
+    command.execute!(image)
   end
 end

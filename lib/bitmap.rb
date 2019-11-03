@@ -16,7 +16,11 @@ class Bitmap
 
   attr_accessor :image
 
-  def initialize(rows:, columns:)
+  def initialize(rows: nil, columns: nil)
+    create!(rows, columns) if rows && columns
+  end
+
+  def create!(rows, columns)
     @image = Matrix.build(rows, columns) { WHITE_COLOUR }
   end
 

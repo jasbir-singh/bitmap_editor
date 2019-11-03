@@ -1,6 +1,10 @@
 require './lib/command_executor'
 
 class BitmapEditor
+  def initialize
+    @current_bitmap = Bitmap.new
+  end
+
   def run(file_path)
     repl unless file_path
 
@@ -13,7 +17,7 @@ class BitmapEditor
     return puts "File doesn't exist" unless File.exist?(file_path)
 
     IO.foreach(file_path) do |line|
-      @current_bitmap = CommandExecutor.new(*line_to_command(line)).execute!(@current_bitmap)
+      CommandExecutor.new(*line_to_command(line)).execute!(@current_bitmap)
     end
   rescue StandardError => e
     puts "Error occured: #{e.message}"

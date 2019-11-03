@@ -9,8 +9,8 @@ module Commands
       @columns = columns.to_i
     end
 
-    def execute!(_ = nil)
-      Bitmap.new(rows: rows, columns: columns)
+    def execute!(image)
+      image.create!(rows, columns)
     end
   end
 end
