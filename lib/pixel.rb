@@ -1,3 +1,5 @@
+require './lib/numeric'
+
 # rubocop:disable Naming/UncommunicativeMethodParamName
 class Pixel
   # NOTE: Usually I wouldn't use such short method/variable names.
@@ -5,8 +7,8 @@ class Pixel
   attr_reader :x, :y
 
   def initialize(x:, y:)
-    @x = x.to_i
-    @y = y.to_i
+    @x = Numeric.parse_positive_integer(x)
+    @y = Numeric.parse_positive_integer(y)
   end
 
   def to_s
