@@ -12,17 +12,32 @@ RSpec.describe BitmapEditor do
     end
 
     context 'when the input is a valid file' do
-      describe 'example1' do
+      context 'when the input is example1.txt' do
         let(:file_path) { 'spec/fixtures/example1.txt' }
         let(:expected_output) do
           <<~EOF
-          OOOOO
-          OOZZZ
-          AWOOO
-          OWOOO
-          OWOOO
-          OWOOO
-        EOF
+            OOOOO
+            OOZZZ
+            AWOOO
+            OWOOO
+            OWOOO
+            OWOOO
+          EOF
+        end
+
+        it 'has the correct output' do
+          expect { BitmapEditor.new.run(file_path) }.to output(expected_output).to_stdout
+        end
+      end
+
+      context 'when the input is example2.txt' do
+        let(:file_path) { 'spec/fixtures/example2.txt' }
+        let(:expected_output) do
+          <<~EOF
+            AB
+            CC
+            DD
+          EOF
         end
 
         it 'has the correct output' do
@@ -36,12 +51,12 @@ RSpec.describe BitmapEditor do
         let(:file_path) { 'spec/fixtures/error_example1.txt' }
         let(:expected_output) do
           <<~EOF
-          AO
-          OO
-        EOF
+            AO
+            OO
+          EOF
         end
 
-        it 'has the correct output' do
+        it 'outputs an error message' do
           expect { BitmapEditor.new.run(file_path) }.to output(/Error occured/).to_stdout
         end
       end
