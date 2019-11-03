@@ -10,7 +10,7 @@ module Commands
     end
 
     def execute!(image)
-      image.create!(rows, columns)
+      image.create!(rows: rows, columns: columns)
     end
   end
 end

@@ -17,10 +17,13 @@ class Bitmap
   attr_accessor :image
 
   def initialize(rows: nil, columns: nil)
-    create!(rows, columns) if rows && columns
+    create!(rows: rows, columns: columns) if rows || columns
   end
 
-  def create!(rows, columns)
+  def create!(rows:, columns:)
+    raise StandardError, 'Please also provide number of columns' if !columns && rows
+    raise StandardError, 'Please also provide number of rows' if !rows && columns
+
     @image = Matrix.build(rows, columns) { WHITE_COLOUR }
   end
 

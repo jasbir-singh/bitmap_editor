@@ -2,19 +2,21 @@ require_relative '../../lib/bitmap'
 require_relative '../../lib/commands/create_image'
 
 RSpec.describe Commands::CreateImage do
+  let(:bitmap) { Bitmap.new }
+
   describe '#execute!' do
-    subject { described_class.new(5, 6).execute! }
+    before { described_class.new(5, 6).execute!(bitmap) }
 
-    it 'creates a new image of type Bitmap' do
-      expect(subject).to be_a(Bitmap)
+    it "initializes the bitmap's size" do
+      expect(bitmap.image).to_not be_nil
     end
 
-    it 'has right number of rows' do
-      expect(subject.row_size).to eq(6)
+    it 'creates the rows with the right number of rows' do
+      expect(bitmap.row_size).to eq(6)
     end
 
-    it 'has the right number of columns' do
-      expect(subject.column_size).to eq(5)
+    it 'creates the rows with the right number of columns' do
+      expect(bitmap.column_size).to eq(5)
     end
   end
 end
