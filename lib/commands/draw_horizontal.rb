@@ -1,17 +1,19 @@
+require_relative '../pixel'
+
 module Commands
   class DrawHorizontal
     attr_reader :column1, :column2, :row, :colour
 
     def initialize(column1, column2, row, colour)
-      @column1 = column1.to_i - 1
-      @column2 = column2.to_i - 1
-      @row = row.to_i - 1
+      @column1 = column1
+      @column2 = column2
+      @row = row
       @colour = colour
     end
 
     def execute!(image)
-      (column1..column2).each do |column|
-        image.fill(row: row, column: column, colour: colour)
+      (column1..column2).each do |x|
+        image.fill(pixel: Pixel.new(x: x, y: row), colour: colour)
       end
       image
     end

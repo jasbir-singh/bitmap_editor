@@ -3,15 +3,15 @@ module Commands
     attr_reader :column, :row1, :row2, :colour
 
     def initialize(column, row1, row2, colour)
-      @column = column.to_i - 1
-      @row1 = row1.to_i - 1
-      @row2 = row2.to_i - 1
+      @column = column
+      @row1 = row1
+      @row2 = row2
       @colour = colour
     end
 
     def execute!(image)
       (row1..row2).each do |row|
-        image.fill(row: row, column: column, colour: colour)
+        image.fill(pixel: Pixel.new(x: column, y: row), colour: colour)
       end
       image
     end

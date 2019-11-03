@@ -1,10 +1,11 @@
+require_relative '../../lib/pixel'
 require_relative '../../lib/bitmap'
 require_relative '../../lib/commands/show_image'
 
 RSpec.describe Commands::ShowImage do
   describe '#execute!' do
     context 'with no image' do
-      let(:image) { }
+      let(:image) {}
 
       it 'returns error message' do
         expect { described_class.new.execute!(image) }.to output(/There is no image/).to_stdout
@@ -15,10 +16,10 @@ RSpec.describe Commands::ShowImage do
       let(:image) do
         Bitmap.new(rows: 2, columns: 2).tap do |image|
           image
-            .fill(row: 0, column: 0, colour: 'A')
-            .fill(row: 0, column: 1, colour: 'B')
-            .fill(row: 1, column: 0, colour: 'C')
-            .fill(row: 1, column: 1, colour: 'D')
+            .fill(pixel: Pixel.new(x: 1, y: 1), colour: 'A')
+            .fill(pixel: Pixel.new(x: 2, y: 1), colour: 'B')
+            .fill(pixel: Pixel.new(x: 1, y: 2), colour: 'C')
+            .fill(pixel: Pixel.new(x: 2, y: 2), colour: 'D')
         end
       end
 

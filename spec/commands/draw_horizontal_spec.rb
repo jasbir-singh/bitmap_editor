@@ -10,16 +10,16 @@ RSpec.describe Commands::DrawHorizontal do
     # TODO: change these tests so that they only
     # verify that fill is getting called with the right arguments
 
-    it 'draws the pixel at 2,3' do
-      expect(subject.image[1, 3]).to eq('Z')
+    it 'draws the pixel at (3, 2)' do
+      expect(subject.fetch(pixel: Pixel.new(x: 3, y: 2))).to eq('Z')
     end
 
-    it 'draws the pixel at 2,6' do
-      expect(subject.image[1, 4]).to eq('Z')
+    it 'draws the pixel at (5, 2)' do
+      expect(subject.fetch(pixel: Pixel.new(x: 5, y: 2))).to eq('Z')
     end
   end
 
-  it 'draws a vertical segment of colour C ' do
-    expect(subject.image[1, 3]).to eq('Z')
+  it 'fills in the middle pixels ' do
+    expect(subject.fetch(pixel: Pixel.new(x: 4, y: 2))).to eq('Z')
   end
 end

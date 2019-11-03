@@ -1,3 +1,4 @@
+require_relative '../../lib/pixel'
 require_relative '../../lib/bitmap'
 require_relative '../../lib/commands/draw_vertical'
 
@@ -7,20 +8,24 @@ RSpec.describe Commands::DrawVertical do
   subject { described_class.new(2, 3, 6, 'W').execute!(image) }
 
   describe 'inclusivity' do
-    # TODO: change these tests so that they only
-    # verify that fill is getting called with the right arguments
-
     it 'draws the pixel at 2,3' do
-      expect(subject.image[2, 1]).to eq('W')
+      expect(subject.fetch(pixel: Pixel.new(x: 2, y: 3))).to eq('W')
     end
 
     it 'draws the pixel at 2,6' do
-      expect(subject.image[5, 1]).to eq('W')
+      expect(subject.fetch(pixel: Pixel.new(x: 2, y: 6))).to eq('W')
     end
   end
 
-  it 'draws a vertical segment of colour C ' do
-    expect(subject.image[3, 1]).to eq('W')
-    expect(subject.image[4, 1]).to eq('W')
+  describe 'it draws the pixels in the middle' do
+    it 'draws at (2, 4)' do
+      expect(subject.fetch(pixel: Pixel.new(x: 2, y: 4))).to eq('W')
+    end
+    it 'draws at (2, 5)' do
+      expect(subject.fetch(pixel: Pixel.new(x: 2, y: 5))).to eq('W')
+    end
+    it 'draws at (2, 6)' do
+      expect(subject.fetch(pixel: Pixel.new(x: 2, y: 6))).to eq('W')
+    end
   end
 end
