@@ -2,17 +2,17 @@ require_relative '../pixel'
 
 module Commands
   class DrawHorizontal
-    attr_reader :column1, :column2, :row, :colour
+    attr_reader :start_column, :end_column, :row, :colour
 
-    def initialize(column1, column2, row, colour)
-      @column1 = column1
-      @column2 = column2
+    def initialize(start_column, end_column, row, colour)
+      @start_column = start_column
+      @end_column = end_column
       @row = row
       @colour = colour
     end
 
     def execute(bitmap)
-      (column1..column2).each do |x|
+      (start_column..end_column).each do |x|
         bitmap.fill(pixel: Pixel.new(x: x, y: row), colour: colour)
       end
     end

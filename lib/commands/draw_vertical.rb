@@ -1,16 +1,16 @@
 module Commands
   class DrawVertical
-    attr_reader :column, :row1, :row2, :colour
+    attr_reader :column, :start_row, :end_row, :colour
 
-    def initialize(column, row1, row2, colour)
+    def initialize(column, start_row, end_row, colour)
       @column = column
-      @row1 = row1
-      @row2 = row2
+      @start_row = start_row
+      @end_row = end_row
       @colour = colour
     end
 
     def execute(bitmap)
-      (row1..row2).each do |row|
+      (start_row..end_row).each do |row|
         bitmap.fill(pixel: Pixel.new(x: column, y: row), colour: colour)
       end
     end
