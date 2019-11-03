@@ -8,9 +8,8 @@ module Commands
       @colour = colour
     end
 
-    def execute!(image)
-      image.fill(pixel: pixel, colour: colour)
-      image
+    def execute!(bitmap)
+      bitmap.fill(pixel: pixel, colour: colour)
     end
   end
 end

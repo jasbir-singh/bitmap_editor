@@ -11,11 +11,10 @@ module Commands
       @colour = colour
     end
 
-    def execute!(image)
+    def execute!(bitmap)
       (column1..column2).each do |x|
-        image.fill(pixel: Pixel.new(x: x, y: row), colour: colour)
+        bitmap.fill(pixel: Pixel.new(x: x, y: row), colour: colour)
       end
-      image
     end
   end
 end

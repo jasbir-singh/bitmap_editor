@@ -1,14 +1,14 @@
 module Commands
   class ShowImage
-    def execute!(image)
-      return no_image unless image.image?
+    def execute!(bitmap)
+      return no_bitmap unless bitmap&.image?
 
-      puts image
+      puts bitmap
     end
 
     private
 
-    def no_image
+    def no_bitmap
       puts 'There is no image'
     end
   end

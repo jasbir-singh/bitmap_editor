@@ -1,7 +1,7 @@
 module Commands
   class ClearImage
-    def execute!(image)
-      image.clear!
+    def execute!(bitmap)
+      bitmap.clear!
     end
   end
 end
