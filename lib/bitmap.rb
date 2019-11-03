@@ -27,7 +27,7 @@ class Bitmap
     self.image = Matrix.build(rows, columns) { WHITE_COLOUR }
   end
 
-  def clear!
+  def clear_image
     each_with_index do |_e, row, col|
       image[row, col] = WHITE_COLOUR
     end

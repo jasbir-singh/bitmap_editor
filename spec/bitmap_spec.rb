@@ -54,8 +54,8 @@ RSpec.describe Bitmap do
     end
   end
 
-  describe '#clear!' do
-    before { subject.clear! }
+  describe '#clear_image' do
+    before { subject.clear_image }
 
     it 'sets each element to zero' do
       subject.each do |elem|
