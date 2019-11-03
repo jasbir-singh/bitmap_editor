@@ -47,17 +47,13 @@ RSpec.describe BitmapEditor do
     end
 
     context 'with invalid commands' do
-      describe 'example2' do
+      describe 'errro_example1.txt' do
         let(:file_path) { 'spec/fixtures/error_example1.txt' }
-        let(:expected_output) do
-          <<~EXAMPLE
-            AO
-            OO
-          EXAMPLE
-        end
 
         it 'outputs an error message' do
-          expect { BitmapEditor.new.run(file_path) }.to output(/Error occured/).to_stdout
+          expect do
+            BitmapEditor.new.run(file_path)
+          end.to output(/X co-ordinate is out of bound/).to_stdout
         end
       end
     end
