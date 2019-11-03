@@ -32,11 +32,15 @@ RSpec.describe Bitmap do
   describe '#fetch' do
     describe 'it validates the bounds' do
       it 'should raise out of bound error' do
-        expect { subject.fetch(pixel: Pixel.new(x: 3, y: 2)) }.to raise_error(Bitmap::OutOfBoundError)
+        expect do
+          subject.fetch(pixel: Pixel.new(x: 3, y: 2))
+        end.to raise_error(Bitmap::OutOfBoundError, 'X co-ordinate is out of bound')
       end
 
       it 'should raise out of bound error' do
-        expect { subject.fetch(pixel: Pixel.new(x: 2, y: 3)) }.to raise_error(Bitmap::OutOfBoundError)
+        expect do
+          subject.fetch(pixel: Pixel.new(x: 2, y: 3))
+        end.to raise_error(Bitmap::OutOfBoundError, 'Y co-ordinate is out of bound')
       end
     end
 
