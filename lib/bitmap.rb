@@ -14,6 +14,7 @@ class Bitmap
   def_delegators :@image, :row_size, :column_size, :each_with_index, :each, :to_a
 
   attr_accessor :image
+  alias image? image
 
   def initialize(rows: nil, columns: nil)
     create!(rows: rows, columns: columns) if rows || columns
