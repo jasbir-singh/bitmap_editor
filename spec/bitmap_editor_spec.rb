@@ -15,14 +15,14 @@ RSpec.describe BitmapEditor do
       context 'when the input is example1.txt' do
         let(:file_path) { 'spec/fixtures/example1.txt' }
         let(:expected_output) do
-          <<~EOF
+          <<~EXAMPLE
             OOOOO
             OOZZZ
             AWOOO
             OWOOO
             OWOOO
             OWOOO
-          EOF
+          EXAMPLE
         end
 
         it 'has the correct output' do
@@ -33,11 +33,11 @@ RSpec.describe BitmapEditor do
       context 'when the input is example2.txt' do
         let(:file_path) { 'spec/fixtures/example2.txt' }
         let(:expected_output) do
-          <<~EOF
+          <<~EXAMPLE
             AB
             CC
             DD
-          EOF
+          EXAMPLE
         end
 
         it 'has the correct output' do
@@ -50,10 +50,10 @@ RSpec.describe BitmapEditor do
       describe 'example2' do
         let(:file_path) { 'spec/fixtures/error_example1.txt' }
         let(:expected_output) do
-          <<~EOF
+          <<~EXAMPLE
             AO
             OO
-          EOF
+          EXAMPLE
         end
 
         it 'outputs an error message' do
