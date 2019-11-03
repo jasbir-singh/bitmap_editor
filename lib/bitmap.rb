@@ -5,8 +5,8 @@ class Bitmap
   WHITE_COLOUR = 'O'.freeze
 
   class OutOfBoundError < StandardError
-    def message
-      'Co-ordinates are out of bound.'
+    def new(message)
+      super(message)
     end
   end
 
@@ -46,6 +46,7 @@ class Bitmap
   private
 
   def validate_bounds(pixel)
-    raise OutOfBoundError if pixel.row > row_size || pixel.column > column_size
+    raise OutOfBoundError, 'Y co-ordinate is out of bound' if pixel.row > row_size
+    raise OutOfBoundError, 'X co-ordinate is out of bound' if pixel.column > column_size
   end
 end
