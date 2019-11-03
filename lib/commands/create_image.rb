@@ -10,7 +10,7 @@ module Commands
     end
 
     def execute!(bitmap)
-      bitmap.create!(rows: rows, columns: columns)
+      bitmap.create_image(rows: rows, columns: columns)
     end
   end
 end

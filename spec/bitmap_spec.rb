@@ -38,18 +38,18 @@ RSpec.describe Bitmap do
     end
   end
 
-  describe '#create!' do
+  describe '#create_image' do
     let(:subject) { Bitmap.new }
 
     context 'when only the rows argument is passed' do
       it 'raises an error' do
-        expect { subject.create!(rows: 2) }.to raise_error(/columns/)
+        expect { subject.create_image(rows: 2) }.to raise_error(/columns/)
       end
     end
 
     context 'when only the columns argument is passed' do
       it 'raises an error' do
-        expect { subject.create!(columns: 2) }.to raise_error(/rows/)
+        expect { subject.create_image(columns: 2) }.to raise_error(/rows/)
       end
     end
   end
