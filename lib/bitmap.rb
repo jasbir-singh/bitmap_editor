@@ -2,16 +2,15 @@ require 'forwardable'
 require 'matrix'
 
 class Bitmap
-  WHITE_COLOUR = 'O'.freeze
-
   class OutOfBoundError < StandardError
     def new(message)
       super(message)
     end
   end
 
-  extend Forwardable
+  WHITE_COLOUR = 'O'.freeze
 
+  extend Forwardable
   def_delegators :@image, :row_size, :column_size, :each_with_index, :each, :to_a
 
   attr_accessor :image
@@ -24,7 +23,7 @@ class Bitmap
     raise StandardError, 'Please also provide number of columns' if !columns && rows
     raise StandardError, 'Please also provide number of rows' if !rows && columns
 
-    @image = Matrix.build(rows, columns) { WHITE_COLOUR }
+    self.image = Matrix.build(rows, columns) { WHITE_COLOUR }
   end
 
   def clear!
