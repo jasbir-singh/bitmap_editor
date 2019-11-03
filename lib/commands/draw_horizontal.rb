@@ -1,5 +1,6 @@
 require_relative '../numeric'
 require_relative '../pixel'
+require_relative './invalid_argument_error'
 
 module Commands
   class DrawHorizontal
@@ -8,7 +9,7 @@ module Commands
     def initialize(start_column, end_column, row, colour)
       @start_column = Numeric.parse_positive_integer(start_column)
       @end_column = Numeric.parse_positive_integer(end_column)
-      raise StandardError, 'X2 has to be greater or equal to X1' if start_column > end_column
+      raise InvalidArgumentError, 'X'  if start_column > end_column
 
       @row = Numeric.parse_positive_integer(row)
       @colour = colour

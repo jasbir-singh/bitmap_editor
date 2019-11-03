@@ -7,7 +7,7 @@ module Commands
 
     def initialize(column, start_row, end_row, colour)
       @column = Numeric.parse_positive_integer(column)
-      raise StandardError, 'Y2 has to be greater or equal to Y1' if start_row > end_row
+      raise InvalidArgumentError, 'Y' if start_row > end_row
 
       @start_row = Numeric.parse_positive_integer(start_row)
       @end_row = Numeric.parse_positive_integer(end_row)
